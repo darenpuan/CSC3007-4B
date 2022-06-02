@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+  </head>
+  <body>
+    <div id="hellos"></div>
+    <script>
+      let data = [
+        {
+          text: "Hello World 1",
+          size: 10,
+          color: "green",
+          font: "Courier New",
+        },
+        { text: "Hello World 2", size: 20, color: "blue", font: "Arial" },
+        {
+          text: "Hello World 3",
+          size: 30,
+          color: "red",
+          font: "Times New Roman",
+        },
+      ];
+
+      let hellos = d3.select("#hellos");
+
+      hellos
+        .selectAll("p")
+        .data(data)
+        .enter()
+        .append("p")
+        .text((d) => d.text)
+
+        .transition()
+        .duration((d, i) => {console.log(d,i); return i * 3000})
+        .style("font-size", (d) => d.size + "px")
+        .style("color", (d) => d.color)
+        .style("font-family", (d) => d.font)
+    </script>
+  </body>
+</html>

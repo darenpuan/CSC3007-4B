@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+  </head>
+  <body>
+    <svg width="1000" height="1000"></svg>
+    <script>
+      let data = [
+        { cx: 400, cy: 600, r: 150, fill: "green", stroke: "black" },
+        { cx: 100, cy: 200, r: 50, fill: "blue", stroke: "purple" },
+        { cx: 650, cy: 100, r: 100, fill: "red", stroke: "orange" },
+      ];
+
+      d3.select("svg")
+        .selectAll("circle")
+        .data(data)
+        .enter()
+        .append("circle")
+        .attr("cx", (d) => d.cx)
+        .attr("cy", (d) => d.cy)
+        .attr("r", (d) => d.r)
+        .attr("fill", (d) => d.fill)
+        .attr("stroke", (d) => d.stroke)
+        .attr("stroke-width", 5);
+    </script>
+  </body>
+</html>
